@@ -11,12 +11,14 @@ of impropper rendering.
 
 The library contains two directives:
 
-1 step-number
+step-number
 usage: 
+
     <step-number ng-model="yourVar" max="youMaxValue" min = "yourMinValue"></step-number>
 
-2 step-date
+step-date
 usage: 
+
     <step-date ng-model="yourDate"></step-date>
     
 It has no support for ESC, ENTER (+/-) and (up/down) keys yet. I plan adding this feature in the near future.
