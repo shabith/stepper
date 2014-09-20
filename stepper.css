@@ -1,0 +1,46 @@
+/* ui-stepper Module
+|--------------------------------------------------------------------------
+|
+| Creates a simple a simple numeric step input.
+| Bootstrap friendly.
+|
+|   @package	ui-stepper
+|   @item		CSS style
+|   @category	Angular Module
+|   @author		Vlad Blindu
+|   @link		http://www.blinduben.ro
+*/
+
+.step-number{
+    border:1px solid;
+    display: table;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    border-radius:3px;
+    vertical-align: middle;
+}
+.input-xs {
+    font-size: 12px;
+    text-align: center;
+    border:none;
+}
+.input-xs:focus{
+    outline:none;
+}
+ .step-number span{
+    display: inline;
+}
+
+ .step-number button{
+    font-size:8px;
+    margin:1px;
+}
+
+.fake-focus{
+    border-color: rgba(82, 168, 236, 0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 3px rgba(82, 168, 236, 0.6);
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),0 0 3px rgba(82, 168, 236, 0.6);
+    -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 3px rgba(82,168,236,0.6);`
+}
