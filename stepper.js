@@ -26,28 +26,40 @@ angular.module("ui.stepnumber", [])
         require:"ngModel",
         scope:{},
         template:'\
-            <ng-form name="stepNumberForm" class="form-inline" novalidate>\
+            <ng-form name="stepNumberForm" class="form-inline" novalidate \>\
                 <div class="step-number"\
-                    ng-class="{\'fake-focus\':editFocus}">\
+                    ng-class="{\'fake-focus\': fakeFocus}"\
+                    ng-keyUp="key($event)">\
                     <span class="input-group-btn">\
                         <button class="btn btn-primary btn-xs"\
-                        type="button"\
-                        ng-disabled="incDisable"\
-                        ng-click="inc()"><i class="glyphicon glyphicon-plus"></i></button>\
+                                type="button"\
+                                ng-disabled="incDisable"\
+                                ng-click="inc()">\
+                                    <i  tabindex="1000"\
+                                        ng-click = "setFakeFocus(true)" \
+                                        ng-blur = "setFakeFocus(false)"\
+                                        class="glyphicon glyphicon-plus">\
+                                    </i>\
+                        </button>\
                     </span>\
                     <input type="text"\
                     ng-style="setWidth()"\
                     name="value"\
                     ng-model="value"\
                     ng-focus="selectAll($event)"\
-                    ng-blur="validate($event)"\
-                    ng-keyUp="key($event)"\
+                    ng-blur="blur($event)"\
                     class="input-xs">\
                     <span class="input-group-btn">\
                         <button class="btn btn-primary btn-xs"\
                                 type="button"\
                                 ng-disabled="decDisable"\
-                                ng-click="dec()"><i class="glyphicon glyphicon-minus"></i></button>\
+                                ng-click="dec()">\
+                                <i  tabindex="1000"\
+                                    ng-click = "setFakeFocus(true)" \
+                                    ng-blur = "setFakeFocus(false)"\
+                                    class="glyphicon glyphicon-minus">\
+                                </i>\
+                        </button>\
                     </span>\
                 </div>\
             </ng-form>',
@@ -56,8 +68,6 @@ angular.module("ui.stepnumber", [])
 
             var max = parseInt(attrs.max,10);
             var min = parseInt(attrs.min,10);
-
-            console.log(max, min)
 
             var input = scope.stepNumberForm.value;
 
@@ -72,7 +82,10 @@ angular.module("ui.stepnumber", [])
             scope.incDisable = false;
             scope.decDisable = false;
 
-            scope.editFocus = false;
+            scope.fakeFocus = false;
+            scope.setFakeFocus = function(val){
+                        scope.fakeFocus = val;
+            }
 
             scope.setWidth = function(){
                     var width = attrs.max ? attrs.max.length : 2;
@@ -119,8 +132,13 @@ angular.module("ui.stepnumber", [])
                 ngModelCtrl.$render();
             }
 
+            scope.blur = function($event){
+                scope.fakeFocus = false;
+                scope.validate($event);
+                console.log($event);
+            }
             scope.validate = function($event){
-                scope.editFocus = false;
+                scope.fakeFocus = false;
                 var val = parseInt(scope.value,10);
                 if(isNaN(val)) scope.value = lastValidValue;
                 else {
@@ -142,7 +160,7 @@ angular.module("ui.stepnumber", [])
             }
 
             scope.selectAll = function($event){
-                scope.editFocus = true;
+                scope.fakeFocus = true;
                 $timeout(function(){
                     $event.target.select();
                 },0);
@@ -150,22 +168,19 @@ angular.module("ui.stepnumber", [])
 
             scope.key = function($event){
                 switch($event.keyCode){
-                    case 27:
-                        scope.value = initValue;
-                        ngModelCtrl.$setViewValue(scope.value);
-                        ngModelCtrl.$render();
-                        element.blur();
+                    case 38:
+                        scope.inc();
+                        scope.validate();
                         break;
-                    case 13:
-                        scope.validate($event);
-                        $timeout(function(){
-                            scope.editfocus=false;},0);
+                    case 40:
+                        scope.dec();
+                        scope.validate();
                         break;
                 }
             }
         }
     }
-}]);
+ }])
 
 angular.module("ui.stepdate", ['ui.stepnumber'])
 
