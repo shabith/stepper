@@ -25,6 +25,6 @@ usage:
 
     <step-date ng-model="yourDate"></step-date>
 
-To do: there is a huge regExp that checks if a date is valid includingleap years. It might be nic to include some validation capabilities.
+To do: there is a huge regExp that checks if a date is valid includingleap years. It might be nice to include some validation capabilities.
 
 Enjoy!
