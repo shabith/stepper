@@ -20,44 +20,44 @@ angular.module("ui.stepper", ['ui.stepnumber', 'ui.stepdate']);
 
 angular.module("ui.stepnumber", [])
 
+
 .directive('stepNumber',['$timeout', function ($timeout) {
     return {
         restrict: 'E',
         require:"ngModel",
-        scope:{},
+        scope:{
+            active:"="
+        },
         template:'\
             <ng-form name="stepNumberForm" class="form-inline" novalidate \>\
-                <div class="step-number"\
+                <div\
+                    tabindex="{{$id}}"\
+                    class="step-number"\
                     ng-class="{\'fake-focus\': fakeFocus}"\
-                    ng-keyUp="key($event)">\
+                    ng-keyup="elementKeyFilter($event)">\
                     <span class="input-group-btn">\
                         <button class="btn btn-primary btn-xs"\
                                 type="button"\
                                 ng-disabled="incDisable"\
                                 ng-click="inc()">\
-                                    <i  tabindex="1000"\
-                                        ng-click = "setFakeFocus(true)" \
-                                        ng-blur = "setFakeFocus(false)"\
-                                        class="glyphicon glyphicon-plus">\
+                                    <i class="glyphicon glyphicon-plus">\
                                     </i>\
                         </button>\
                     </span>\
                     <input type="text"\
                     ng-style="setWidth()"\
                     name="value"\
+                    ng-keyup="inputKeyFilter($event)"\
                     ng-model="value"\
                     ng-focus="selectAll($event)"\
-                    ng-blur="blur($event)"\
+                    ng-blur="validate()"\
                     class="input-xs">\
                     <span class="input-group-btn">\
                         <button class="btn btn-primary btn-xs"\
                                 type="button"\
                                 ng-disabled="decDisable"\
                                 ng-click="dec()">\
-                                <i  tabindex="1000"\
-                                    ng-click = "setFakeFocus(true)" \
-                                    ng-blur = "setFakeFocus(false)"\
-                                    class="glyphicon glyphicon-minus">\
+                                <i class="glyphicon glyphicon-minus">\
                                 </i>\
                         </button>\
                     </span>\
@@ -66,26 +66,22 @@ angular.module("ui.stepnumber", [])
 
         link:function(scope,element,attrs, ngModelCtrl){
 
-            var max = parseInt(attrs.max,10);
-            var min = parseInt(attrs.min,10);
+            var max = parseInt(attrs.max,10),
+                min = parseInt(attrs.min,10),
+                lastValidValue = '';
 
             var input = scope.stepNumberForm.value;
 
             scope.$watch(ngModelCtrl,
                     function(){
                         scope.value = ngModelCtrl.$viewValue;
-                        lastValidValue = !isNaN(scope.value) ? scope.value : max ? max : min ? scope.min : 0 ;
-                        initValue = lastValidValue;
-                        scope.initValue = true;
+                        lastValidValue = scope.value;
                     });
 
+            scope.fakeFocus = false;
+            
             scope.incDisable = false;
             scope.decDisable = false;
-
-            scope.fakeFocus = false;
-            scope.setFakeFocus = function(val){
-                        scope.fakeFocus = val;
-            }
 
             scope.setWidth = function(){
                     var width = attrs.max ? attrs.max.length : 2;
@@ -94,11 +90,31 @@ angular.module("ui.stepnumber", [])
             }
 
             input.$parsers.unshift(function (inputValue) {
-                var digits = inputValue.split('').filter(function (s) { return (!isNaN(s) && s != ' '); }).join('');
+                var digits = inputValue.replace( /[^0-9]+/g, '');
                 input.$viewValue = digits;
                 input.$render();
                 return digits;
             });
+
+            scope.keyControl = function(event){
+                switch(event.keyCode) {
+                    case 27:
+                        var elem = element.find('input');
+                        scope.value = lastValidValue;
+                        event.preventDefault();
+                        $timeout(function(){elem[0].blur();},0);
+                        break;
+                    case 13:
+                        var elem = element.find('input');
+                        scope.validate();
+                        event.preventDefault();
+                        $timeout(function(){elem[0].blur();},0);
+                        break;
+                    default:
+                        event.preventDefault();
+                }
+
+            }
 
             scope.inc = function(){
                 var num = parseInt(scope.value,10);
@@ -132,12 +148,7 @@ angular.module("ui.stepnumber", [])
                 ngModelCtrl.$render();
             }
 
-            scope.blur = function($event){
-                scope.fakeFocus = false;
-                scope.validate($event);
-                console.log($event);
-            }
-            scope.validate = function($event){
+            scope.validate = function(){
                 scope.fakeFocus = false;
                 var val = parseInt(scope.value,10);
                 if(isNaN(val)) scope.value = lastValidValue;
@@ -165,19 +176,6 @@ angular.module("ui.stepnumber", [])
                     $event.target.select();
                 },0);
             }
-
-            scope.key = function($event){
-                switch($event.keyCode){
-                    case 38:
-                        scope.inc();
-                        scope.validate();
-                        break;
-                    case 40:
-                        scope.dec();
-                        scope.validate();
-                        break;
-                }
-            }
         }
     }
  }])
@@ -191,13 +189,7 @@ angular.module("ui.stepdate", ['ui.stepnumber'])
             require:"ngModel",
         template:'\
             <ng-form name="stepDateForm" class="form-inline" novalidate>\
-                <table>\
-                    <tr>\
-                        <td>\Day:</td>\
-                        <td>\Month:</td>\
-                        <td>\Year:</td>\
-                    <tr>\
-                        <td>\
+                        <div class="step-date">Day:\
                             <step-number\
                                 name="day"\
                                 ng-model="stepDate.day"\
@@ -205,8 +197,8 @@ angular.module("ui.stepdate", ['ui.stepnumber'])
                                 max="31"\
                                 min="1">\
                             </step-number>\
-                        </td>\
-                        <td>\
+                        </div>\
+                        <div class="step-date">Month:\
                             <step-number\
                                 name="month"\
                                 ng-model="stepDate.month"\
@@ -214,8 +206,8 @@ angular.module("ui.stepdate", ['ui.stepnumber'])
                                 max="12"\
                                 min="1">\
                             </step-number>\
-                        </td>\
-                        <td>\
+                        </div>\
+                        <div class="step-date">Year:\
                             <step-number\
                                 name="year"\
                                 ng-model="stepDate.year"\
@@ -223,9 +215,7 @@ angular.module("ui.stepdate", ['ui.stepnumber'])
                                 max="3000"\
                                 min="2000">\
                             </step-number>\
-                        </td>\
-                    <tr>\
-                </table>\
+                        </div>\
             </ng-form>',
 
         link:function(scope,element,attrs, ngDateModelCtrl){
