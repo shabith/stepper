@@ -62,7 +62,6 @@ angular.module("ui.stepnumber", [])
                         </button>\
                     </span>\
                 </div>\
-                incDis: {{incDisable}}  decDis:{{decDisable}}<br>\
             </ng-form>',
 
         link:function(scope,element,attrs, ngModelCtrl){
