@@ -34,8 +34,8 @@ angular.module("ui.stepnumber", [])
                     tabindex="{{$id}}"\
                     class="step-number"\
                     ng-class="{\'fake-focus\': fakeFocus}"\
-                    ng-keyup="elementKeyFilter($event)">\
-                    <span class="input-group-btn">\
+                    ng-keyup="keyControl($event)">\
+                    <span>\
                         <button class="btn btn-primary btn-xs"\
                                 type="button"\
                                 ng-disabled="incDisable"\
@@ -47,12 +47,12 @@ angular.module("ui.stepnumber", [])
                     <input type="text"\
                     ng-style="setWidth()"\
                     name="value"\
-                    ng-keyup="inputKeyFilter($event)"\
+                    ng-keyup="keyControl($event)"\
                     ng-model="value"\
                     ng-focus="selectAll($event)"\
                     ng-blur="validate()"\
                     class="input-xs">\
-                    <span class="input-group-btn">\
+                    <span>\
                         <button class="btn btn-primary btn-xs"\
                                 type="button"\
                                 ng-disabled="decDisable"\
@@ -97,22 +97,50 @@ angular.module("ui.stepnumber", [])
             });
 
             scope.keyControl = function(event){
-                switch(event.keyCode) {
-                    case 27:
-                        var elem = element.find('input');
-                        scope.value = lastValidValue;
+            	if(event.target.tagName == 'DIV') switch(event.keyCode) {
+							case 27:
+								var elem = element.find('div');
+								scope.value = lastValidValue;
+								event.preventDefault();
+								$timeout(function(){elem[0].blur();},0);
+								break;
+							case 13:
+								var elem = element.find('div');
+								scope.validate();
+								event.preventDefault();
+								$timeout(function(){elem[0].blur();},0);
+								break;
+							case 187:
+								scope.inc();
+								break;
+							case 189:
+								scope.dec();
+								break;
+							case 39:
+								scope.inc();
+								break;
+							case 37:
+								scope.dec();
+								break;
+							default:
+							event.preventDefault();
+						}
+            	else switch(event.keyCode) {
+                    	case 27:
+                        	var elem = element.find('input');
+                        	scope.value = lastValidValue;
+                        	event.preventDefault();
+                        	$timeout(function(){elem[0].blur();},0);
+                        	break;
+                    	case 13:
+                        	var elem = element.find('input');
+                        	scope.validate();
+                        	event.preventDefault();
+                        	$timeout(function(){elem[0].blur();},0);
+                        	break;
+                    	default:
                         event.preventDefault();
-                        $timeout(function(){elem[0].blur();},0);
-                        break;
-                    case 13:
-                        var elem = element.find('input');
-                        scope.validate();
-                        event.preventDefault();
-                        $timeout(function(){elem[0].blur();},0);
-                        break;
-                    default:
-                        event.preventDefault();
-                }
+                	}
 
             }
 
