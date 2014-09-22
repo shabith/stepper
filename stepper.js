@@ -62,6 +62,7 @@ angular.module("ui.stepnumber", [])
                         </button>\
                     </span>\
                 </div>\
+                incDis: {{incDisable}}  decDis:{{decDisable}}<br>\
             </ng-form>',
 
         link:function(scope,element,attrs, ngModelCtrl){
@@ -146,15 +147,15 @@ angular.module("ui.stepnumber", [])
 
             scope.inc = function(){
                 var num = parseInt(scope.value,10);
-                if(!isNaN(max)) {
-                    if( num < max ) {
+                if(!isNaN(min)) {
+                    if( num < max) {
                         num++;
-                        scope.incDisable = false;
+                        scope.decDisable = false;
                     }
-                    if (num > min) scope.decDisable = false;
-                    if (num == max) scope.incDisable = true;
+                    if(num==max) scope.incDisable = true;
                 }
                 else num++;
+                console.log('inc:', num, max);
                 scope.value = num.toString().length<2 ? '0'+num.toString() : num.toString();
                 ngModelCtrl.$setViewValue(scope.value);
                 ngModelCtrl.$render();
@@ -165,12 +166,12 @@ angular.module("ui.stepnumber", [])
                 if(!isNaN(min)) {
                     if( num > min) {
                         num--;
-                        scope.decDisable = false;
-                    } else scope.decDisable = true;
-                    if (num < scope.max) scope.incDisable = false;
-                    if (num == min) scope.decDisable = true;
+                        scope.incDisable = false;
+                    }
+                    if(num==min)scope.decDisable = true;
                 }
                 else num--;
+                console.log('dec:', num, min);
                 scope.value = num.toString().length<2 ? '0'+num.toString() : num.toString();
                 ngModelCtrl.$setViewValue(scope.value);
                 ngModelCtrl.$render();
@@ -247,6 +248,7 @@ angular.module("ui.stepdate", ['ui.stepnumber'])
             </ng-form>',
 
         link:function(scope,element,attrs, ngDateModelCtrl){
+            
             scope.stepDate = {};
             scope.$watch(ngDateModelCtrl.$viewValue, function(){
                     scope.stepDate.day = ngDateModelCtrl.$viewValue.split('-')[2];
