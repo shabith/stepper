@@ -27,6 +27,6 @@ usage:
 
 To do: there is a huge regExp that checks if a date is valid including leap years. It might be nice to include some validation capabilities. Also a configuration object to be passed to the element would be a bonus.
 
-Here is a working demo: http:\\www.stepper.blinduben.ro
+Here is a working demo: http:\\\www.stepper.blinduben.ro
 
 Enjoy!
