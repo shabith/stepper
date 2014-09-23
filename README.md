@@ -27,7 +27,8 @@ usage:
 
 To do: there is a huge regExp that checks if a date is valid including leap years. It might be nice to include some validation capabilities. Also a configuration object to be passed to the element would be a bonus.
 
->This is how it looks like rendered with the default bootstrap theme:
+This is how it looks like rendered with the default bootstrap theme:
+
 >![default-render](images/bootstrap-default.jpg "default bootsrap theme appearence")
 
 Here is a working [demo](http://www.stepper.blinduben.ro).
