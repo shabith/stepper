@@ -29,7 +29,7 @@ To do: there is a huge regExp that checks if a date is valid including leap year
 
 This is how it looks like rendered with the default bootstrap theme:
 
->![default-render](images/bootstrap-default.jpg "default bootsrap theme appearence")
+![default-render](images/bootstrap-default.jpg "default bootsrap theme appearence")
 
 Here is a working [demo](http://www.stepper.blinduben.ro).
 
