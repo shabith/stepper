@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="800px" height="600px" viewBox="0 0 800 600" enable-background="new 0 0 800 600" xml:space="preserve">
+<g>
+	<defs>
+		<path id="SVGID_1_" d="M666,439.807C666,491.827,623.821,534,571.792,534H286.208C234.178,534,192,491.827,192,439.807V180.193
+			C192,128.172,234.178,86,286.208,86h285.584C623.821,86,666,128.172,666,180.193V439.807z"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  overflow="visible"/>
+	</clipPath>
+	<g clip-path="url(#SVGID_2_)">
+		<rect x="435.5" y="88.5" fill="#B3B3B3" stroke="#000000" stroke-miterlimit="10" width="242" height="222"/>
+		<rect x="192.5" y="310.5" fill="#B3B3B3" stroke="#000000" stroke-miterlimit="10" width="243" height="223"/>
+		<rect x="217.5" y="104.5" fill="#0071BC" stroke="#000000" stroke-miterlimit="10" width="106" height="100"/>
+		<rect x="323.5" y="204.5" fill="#0071BC" stroke="#000000" stroke-miterlimit="10" width="104" height="99"/>
+		<path fill="#FFFFFF" d="M303.016,161.782v-7.341h-61.208v7.341H303.016z"/>
+		<path fill="#FFFFFF" d="M372.107,219.087v28.754H345.3v7.341h26.808v29h7.591v-29h26.807v-7.341h-26.807v-28.754H372.107z"/>
+		<path fill="#FFFFFF" d="M486.762,205.663v-16.416H627.18v16.416H486.762z"/>
+		<path fill="#FFFFFF" d="M322.535,344.031v64.298h61.501v16.417h-61.501v64.847h-17.417v-64.847h-61.5v-16.417h61.5v-64.298
+			H322.535z"/>
+		<rect x="546.5" y="417.5" fill="#0071BC" stroke="#000000" stroke-miterlimit="10" width="101" height="94"/>
+		<rect x="442.5" y="318.5" fill="#0071BC" stroke="#000000" stroke-miterlimit="10" width="104" height="99"/>
+		<path fill="#FFFFFF" d="M570.341,461v7.342h61.207V461H570.341z"/>
+		<path fill="#FFFFFF" d="M497.154,400.679v-28.755h26.808v-7.342h-26.808v-29h-7.592v29h-26.808v7.342h26.808v28.755H497.154z"/>
+	</g>
+</g>
+<path fill="none" stroke="#999999" stroke-width="8" stroke-miterlimit="10" d="M666,440.018C666,491.923,623.867,534,571.895,534
+	H286.105C234.132,534,192,491.923,192,440.018V179.982C192,128.077,234.132,86,286.105,86h285.789
+	C623.867,86,666,128.077,666,179.982V440.018z"/>
+</svg>
