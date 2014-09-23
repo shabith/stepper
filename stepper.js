@@ -29,7 +29,7 @@ angular.module("ui.stepnumber", [])
             active:"="
         },
         template:'\
-            <ng-form name="stepNumberForm" class="form-inline" novalidate \>\
+            <ng-form name="stepNumberForm" novalidate \>\
                 <div\
                     tabindex="{{$id}}"\
                     class="step-number"\
@@ -40,8 +40,8 @@ angular.module("ui.stepnumber", [])
                                 type="button"\
                                 ng-disabled="incDisable"\
                                 ng-click="inc()">\
-                                    <i class="glyphicon glyphicon-plus">\
-                                    </i>\
+                                <i class="glyphicon glyphicon-plus">\
+                                </i>\
                         </button>\
                     </span>\
                     <input type="text"\
