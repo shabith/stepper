@@ -1,4 +1,4 @@
-![stepper-logo](images/stepper.png "stepper logo")Angular - stepper
+![stepper-logo](images/stepper.png "stepper logo")  Angular/Bootstrap - stepper
 =================
 
 A simple step numeric input written in angular with bootstrap styling. It also contains a simple date input element 
