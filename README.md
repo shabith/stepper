@@ -15,12 +15,14 @@ No validation required because the directive inhibits any other input except dig
 The library contains two directives:
 
 step-number
+-----------
+
 usage: 
 
     <step-number ng-model="yourVar" max="youMaxValue" min = "yourMinValue"></step-number>
 
 step-date
-
+-----------
 usage: 
 
     <step-date ng-model="yourDate"></step-date>
