@@ -18,15 +18,19 @@
 		<rect x="192.5" y="310.5" fill="#B3B3B3" stroke="#000000" stroke-miterlimit="10" width="243" height="223"/>
 		<rect x="217.5" y="104.5" fill="#0071BC" stroke="#000000" stroke-miterlimit="10" width="106" height="100"/>
 		<rect x="323.5" y="204.5" fill="#0071BC" stroke="#000000" stroke-miterlimit="10" width="104" height="99"/>
-		<path fill="#FFFFFF" d="M303.016,161.782v-7.341h-61.208v7.341H303.016z"/>
-		<path fill="#FFFFFF" d="M372.107,219.087v28.754H345.3v7.341h26.808v29h7.591v-29h26.807v-7.341h-26.807v-28.754H372.107z"/>
-		<path fill="#FFFFFF" d="M486.762,205.663v-16.416H627.18v16.416H486.762z"/>
-		<path fill="#FFFFFF" d="M322.535,344.031v64.298h61.501v16.417h-61.501v64.847h-17.417v-64.847h-61.5v-16.417h61.5v-64.298
-			H322.535z"/>
+		<path fill="#FFFFFF" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M303.016,161.782v-7.341h-61.208v7.341H303.016
+			z"/>
+		<path fill="#FFFFFF" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M372.107,219.087v28.754H345.3v7.341h26.808v29
+			h7.591v-29h26.807v-7.341h-26.807v-28.754H372.107z"/>
+		<path fill="#FFFFFF" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M486.762,205.663v-16.416H627.18v16.416
+			H486.762z"/>
+		<path fill="#FFFFFF" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" d="M322.535,344.031v64.298h61.501v16.417h-61.501
+			v64.847h-17.417v-64.847h-61.5v-16.417h61.5v-64.298H322.535z"/>
 		<rect x="546.5" y="417.5" fill="#0071BC" stroke="#000000" stroke-miterlimit="10" width="101" height="94"/>
 		<rect x="442.5" y="318.5" fill="#0071BC" stroke="#000000" stroke-miterlimit="10" width="104" height="99"/>
-		<path fill="#FFFFFF" d="M570.341,461v7.342h61.207V461H570.341z"/>
-		<path fill="#FFFFFF" d="M497.154,400.679v-28.755h26.808v-7.342h-26.808v-29h-7.592v29h-26.808v7.342h26.808v28.755H497.154z"/>
+		<path fill="#FFFFFF" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M570.341,461v7.342h61.207V461H570.341z"/>
+		<path fill="#FFFFFF" stroke="#FFFFFF" stroke-width="5" stroke-miterlimit="10" d="M497.154,400.679v-28.755h26.808v-7.342
+			h-26.808v-29h-7.592v29h-26.808v7.342h26.808v28.755H497.154z"/>
 	</g>
 </g>
 <path fill="none" stroke="#999999" stroke-width="8" stroke-miterlimit="10" d="M666,440.018C666,491.923,623.867,534,571.895,534
