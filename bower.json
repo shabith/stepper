@@ -2,14 +2,15 @@
   "name": "stepper",
   "version": "0.1.0",
   "main":["stepper.js", "stepper.css"],
-  "ignore": [
+  "ignore": ["images",
     "images/*.*",
     "*.komodoproject"
   ],
   "dependencies": {
-    "angular": "~1.2.0",
-    "bootstrap": "~3.0.0"
+    "angular": ">=1.2.0",
+    "bootstrap": ">=3.0.0"
   },
   "devDependencies": {
   }
 }
+
