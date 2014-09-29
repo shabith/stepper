@@ -1,6 +1,7 @@
 {
   "name": "stepper",
   "version": "0.1.0",
+  "main":["stepper.js", "stepper.css"],
   "ignore": [
     "images/*.*",
     "*.komodoproject"
