@@ -6,6 +6,5 @@
   "dependencies": {
     "angular.js": "~1.2.0",
     "bootstrap.css": "~3.0.0",
-  },
-  "devDependencies": {}
+  }
 }
