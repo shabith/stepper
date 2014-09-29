@@ -1,0 +1,11 @@
+{
+  "name": "angular-stepper",
+  "version": "0.1.0",
+  "main": "path/to/main.css",
+  "ignore": ["images/*.*", "*.komodoproject"],
+  "dependencies": {
+    "angular.js": "~1.2.0",
+    "bootstrap.css": "~3.0.0",
+  },
+  "devDependencies": {}
+}
