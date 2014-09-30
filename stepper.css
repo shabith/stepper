@@ -26,16 +26,38 @@ input::-webkit-inner-spin-button {
     border-radius:4px;
 }
 .input-xs {
-    font-size: 12px;
+    font-size: 1em;
     text-align: center;
     border:none;
-    line-height: 1,1;
-    margin-left: -4px;
-    margin-right:-4px;
-    margin-top:1px;
-    margin-bottom:1px;
+    line-height: 1em;
+    height:1.1em;
 
 }
+.stepper-mask{
+    display: inline;
+    overflow: hidden;
+    background: blue;
+}
+.step-number span{
+    display: inline;
+    height: 100%;
+    width: 18px;
+    margin-bottom: 1px;
+    margin-top: 1px;
+    text-align: center;
+}
+
+.step-number span:first-child{
+    margin-left: 1px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+.step-number span:last-child{
+    margin-right: 1px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
 .input-xs:focus{
     outline:none;
 }

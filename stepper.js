@@ -30,16 +30,18 @@ angular.module("ui.stepnumber", [])
         },
         template:'\
             <ng-form name="stepNumberForm" novalidate \>\
-                <div\
+                <div class="step-number"\
                     tabindex="{{$id}}"\
                     ng-class="{\'fake-focus\': fakeFocus}"\
                     ng-keyup="keyControl($event)">\
                     <span\
 						ng-disabled="incDisable"\
+                        class="btn-primary"\
 						ng-click="inc()">\
 						<i class="glyphicon glyphicon-plus ">\
 						</i>\
                     </span>\
+                    <div class="stepper-mask">\
                     <input type="text"\
                     ng-style="setWidth()"\
                     name="value"\
@@ -48,8 +50,10 @@ angular.module("ui.stepnumber", [])
                     ng-focus="selectAll($event)"\
                     ng-blur="validate()"\
                     class="input-xs">\
+                    </div>\
                     <span\
 						ng-disabled="decDisable"\
+                        class="btn-primary"\
 						ng-click="dec()">\
 						<i class="glyphicon glyphicon-minus">\
 						</i>\
@@ -84,8 +88,10 @@ angular.module("ui.stepnumber", [])
             scope.decDisable = false;
 
             scope.setWidth = function(){
-				console.log('digits:', digits);
                     width =8 + digits*8;
+
+                    console.log('digits:', digits,"    w:",width.toString()+'px');
+
                     return {width:width.toString()+'px'};
             }
 
@@ -169,7 +175,6 @@ angular.module("ui.stepnumber", [])
                     if(num==min)scope.decDisable = true;
                 }
                 else num--;
-                console.log('dec:', num, min);
                 scope.value = fixedLen(num);
                 ngModelCtrl.$setViewValue(scope.value);
                 ngModelCtrl.$render();
@@ -222,7 +227,8 @@ angular.module("ui.stepdate", ['ui.stepnumber'])
                                 ng-model="stepDate.day"\
                                 ng-change="refresh()"\
                                 max="31"\
-                                min="1">\
+                                min="1"\
+                                digits="2">\
                             </step-number>\
                         </div>\
                         <div class="step-date">Month:\
@@ -231,7 +237,8 @@ angular.module("ui.stepdate", ['ui.stepnumber'])
                                 ng-model="stepDate.month"\
                                 ng-change="refresh()"\
                                 max="12"\
-                                min="1">\
+                                min="1"\
+                                digits="2">\
                             </step-number>\
                         </div>\
                         <div class="step-date">Year:\
@@ -240,7 +247,8 @@ angular.module("ui.stepdate", ['ui.stepnumber'])
                                 ng-model="stepDate.year"\
                                 ng-change="refresh()"\
                                 max="3000"\
-                                min="2000">\
+                                min="2000"\
+                                digits="4">\
                             </step-number>\
                         </div>\
             </ng-form>',
