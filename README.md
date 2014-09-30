@@ -19,7 +19,7 @@ step-number
 
 usage: 
 
-    <step-number ng-model="yourVar" max="youMaxValue" min = "yourMinValue"></step-number>
+    <step-number ng-model="yourVar" max="youMaxValue" min = "yourMinValue" digits="howManyDigits"></step-number>
 
 step-date
 -----------
