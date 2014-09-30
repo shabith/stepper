@@ -32,17 +32,13 @@ angular.module("ui.stepnumber", [])
             <ng-form name="stepNumberForm" novalidate \>\
                 <div\
                     tabindex="{{$id}}"\
-                    class="step-number"\
                     ng-class="{\'fake-focus\': fakeFocus}"\
                     ng-keyup="keyControl($event)">\
-                    <span>\
-                        <button class="btn btn-primary btn-xs"\
-                                type="button"\
-                                ng-disabled="incDisable"\
-                                ng-click="inc()">\
-                                <i class="glyphicon glyphicon-plus">\
-                                </i>\
-                        </button>\
+                    <span\
+						ng-disabled="incDisable"\
+						ng-click="inc()">\
+						<i class="glyphicon glyphicon-plus ">\
+						</i>\
                     </span>\
                     <input type="text"\
                     ng-style="setWidth()"\
@@ -52,29 +48,33 @@ angular.module("ui.stepnumber", [])
                     ng-focus="selectAll($event)"\
                     ng-blur="validate()"\
                     class="input-xs">\
-                    <span>\
-                        <button class="btn btn-primary btn-xs"\
-                                type="button"\
-                                ng-disabled="decDisable"\
-                                ng-click="dec()">\
-                                <i class="glyphicon glyphicon-minus">\
-                                </i>\
-                        </button>\
+                    <span\
+						ng-disabled="decDisable"\
+						ng-click="dec()">\
+						<i class="glyphicon glyphicon-minus">\
+						</i>\
                     </span>\
                 </div>\
             </ng-form>',
 
         link:function(scope,element,attrs, ngModelCtrl){
-
+			console.log("digits:  "+(!isNaN(parseInt(attrs.digits,10))) );
             var max = parseInt(attrs.max,10),
                 min = parseInt(attrs.min,10),
+				digits = (!isNaN(parseInt(attrs.digits,10))) ? parseInt(attrs.digits,10) : 1,
                 lastValidValue = '';
 
             var input = scope.stepNumberForm.value;
+			var fixedLen = function(num){
+				var str = num.toString(),
+					len = str.length, blank = "0000000000";
+				return len<digits ? blank.substring(0,(digits-len))+str : str;
+			}
 
             scope.$watch(ngModelCtrl,
                     function(){
-                        scope.value = ngModelCtrl.$viewValue;
+                        ngModelCtrl.$viewValue = fixedLen(ngModelCtrl.$viewValue);
+						scope.value = ngModelCtrl.$viewValue;
                         lastValidValue = scope.value;
                     });
 
@@ -84,8 +84,8 @@ angular.module("ui.stepnumber", [])
             scope.decDisable = false;
 
             scope.setWidth = function(){
-                    var width = attrs.max ? attrs.max.length : 2;
-                    width =8 + width*8;
+				console.log('digits:', digits);
+                    width =8 + digits*8;
                     return {width:width.toString()+'px'};
             }
 
@@ -154,8 +154,7 @@ angular.module("ui.stepnumber", [])
                     if(num==max) scope.incDisable = true;
                 }
                 else num++;
-                console.log('inc:', num, max);
-                scope.value = num.toString().length<2 ? '0'+num.toString() : num.toString();
+                scope.value = fixedLen(num);
                 ngModelCtrl.$setViewValue(scope.value);
                 ngModelCtrl.$render();
             }
@@ -171,7 +170,7 @@ angular.module("ui.stepnumber", [])
                 }
                 else num--;
                 console.log('dec:', num, min);
-                scope.value = num.toString().length<2 ? '0'+num.toString() : num.toString();
+                scope.value = fixedLen(num);
                 ngModelCtrl.$setViewValue(scope.value);
                 ngModelCtrl.$render();
             }
