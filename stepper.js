@@ -30,39 +30,26 @@ angular.module("ui.stepnumber", [])
         },
         template:'\
             <ng-form name="stepNumberForm" novalidate \>\
-                <div class="step-number"\
+                <div class="step-number fakeFocus"\
                     tabindex="{{$id}}"\
                     ng-class="{\'fake-focus\': fakeFocus}"\
-                    ng-keyup="keyControl($event)">\
-                    <span\
+                    ng-keyup="keyControl($event)"><button\
 						ng-disabled="incDisable"\
-                        class="btn-primary"\
+                        class="btn btn-primary btn-stepper"\
 						ng-click="inc()">\
-						<i class="glyphicon glyphicon-plus ">\
-						</i>\
-                    </span>\
-                    <div class="stepper-mask">\
-                    <input type="text"\
+						<i class="glyphicon glyphicon-plus "></i></button><input type="text"\
                     ng-style="setWidth()"\
                     name="value"\
                     ng-keyup="keyControl($event)"\
                     ng-model="value"\
                     ng-focus="selectAll($event)"\
-                    ng-blur="validate()"\
-                    class="input-xs">\
-                    </div>\
-                    <span\
+                    ng-blur="validate()" ><button\
 						ng-disabled="decDisable"\
-                        class="btn-primary"\
-						ng-click="dec()">\
-						<i class="glyphicon glyphicon-minus">\
-						</i>\
-                    </span>\
-                </div>\
+                        class="btn btn-primary btn-stepper "\
+						ng-click="dec()"><i class="glyphicon glyphicon-minus "></i></button></div>\
             </ng-form>',
 
         link:function(scope,element,attrs, ngModelCtrl){
-			console.log("digits:  "+(!isNaN(parseInt(attrs.digits,10))) );
             var max = parseInt(attrs.max,10),
                 min = parseInt(attrs.min,10),
 				digits = (!isNaN(parseInt(attrs.digits,10))) ? parseInt(attrs.digits,10) : 1,
@@ -89,9 +76,6 @@ angular.module("ui.stepnumber", [])
 
             scope.setWidth = function(){
                     width =8 + digits*8;
-
-                    console.log('digits:', digits,"    w:",width.toString()+'px');
-
                     return {width:width.toString()+'px'};
             }
 
