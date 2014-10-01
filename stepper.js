@@ -25,9 +25,7 @@ angular.module("ui.stepnumber", [])
     return {
         restrict: 'E',
         require:"ngModel",
-        scope:{
-            active:"="
-        },
+        scope:{},
         template:'\
             <ng-form name="stepNumberForm" novalidate \>\
                 <div class="step-number fakeFocus"\
@@ -65,15 +63,17 @@ angular.module("ui.stepnumber", [])
             scope.$watch(ngModelCtrl,
                     function(){
                         ngModelCtrl.$viewValue = fixedLen(ngModelCtrl.$viewValue);
-						scope.value = ngModelCtrl.$viewValue;
+						var num = parseInt(ngModelCtrl.$viewValue, 10);
+						num = num >= max ? max : num;
+						num = num <= min ? min : num;
+						scope.incDisable = num >= max ? true : false;
+						scope.decDisable = num <= min ? true : false;
+						scope.value = num.toString();
                         lastValidValue = scope.value;
                     });
 
             scope.fakeFocus = false;
             
-            scope.incDisable = false;
-            scope.decDisable = false;
-
             scope.setWidth = function(){
                     width =8 + digits*8;
                     return {width:width.toString()+'px'};
