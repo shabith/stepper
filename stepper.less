@@ -1,0 +1,53 @@
+//Stepper vars:
+
+@line-height-stepper:           1;
+@font-size-stepper:             ceil((@font-size-base * 0.8)); // ~7px
+@padding-stepper-horizontal:    2px;
+@padding-stepper-vertical:      2px;
+@border-stepper:                1px solid @input-border;
+
+//Stepper classes
+.btn-stepper {
+  .button-size(@padding-stepper-vertical; @padding-stepper-horizontal; @font-size-stepper; @line-height-stepper; @border-radius-small);
+}
+
+.focus{
+    outline:none;
+    border:2px solid @input-border-focus;
+}
+
+
+.step-number{
+    .user-select(none);
+    display:inline;
+    font-size:@font-size-stepper;
+    line-height: @line-height-stepper;
+    border:@border-stepper;
+    padding-bottom:5px;
+    padding-top:3px;
+    padding-left:1px;
+    padding-right:1px;
+    border-radius:@border-radius-small;
+    background-color: @input-bg;
+}
+.step-number:focus{
+   .focus;
+}
+.fake-focus{
+    .focus;
+}
+.step-number input{
+    border:none;
+    outline:none;
+    height:@font-size-large;
+    text-align:center;
+}
+.step-number button:first-child{
+    .border-right-radius(0);
+}
+.step-number button:last-child{
+    .border-left-radius(0);
+}
+.step-date{
+    display: inline-block;
+}
