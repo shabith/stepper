@@ -1,0 +1,6 @@
+node_modules
+*.DS_Store
+.sass-cache
+coverage
+bower_components
+.idea

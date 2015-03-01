@@ -1,5 +1,7 @@
-//Stepper vars:
-
+@import './bower_components/bootstrap/less/variables.less';
+@import './bower_components/bootstrap/less/mixins/buttons.less';
+@import './bower_components/bootstrap/less/mixins/vendor-prefixes.less';
+@import './bower_components/bootstrap/less/mixins/border-radius.less';//Stepper vars:
 @line-height-stepper:           1;
 @font-size-stepper:             ceil((@font-size-base * 0.8)); // ~7px
 @padding-stepper-horizontal:    2px;
@@ -22,7 +24,7 @@
     display:inline;
     font-size:@font-size-stepper;
     line-height: @line-height-stepper;
-    border:@border-stepper;
+    border:@border-stepper; 
     padding-bottom:5px;
     padding-top:3px;
     padding-left:1px;

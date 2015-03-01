@@ -1,19 +1,6 @@
-/*
-|--------------------------------------------------------------------------
-| ui-stepper Module
-|--------------------------------------------------------------------------
-|
-| Creates a simple a simple numeric step input.
-| Bootstrap friendly.
-|
-|   @package	ui-step-number
-|   @item		Angular Directive
-|   @category	Angular Module
-|   @author		Vlad Blindu
-|   @link		http://www.blinduben.ro
-*/
-
-
+/*! stepper - v1.0.0 - 2015-03-01
+* https://github.com/shabith/stepper
+* Copyright (c) Shabith Ishan [shabith] 2015; Licensed MIT */
 angular.module("ui.stepper", ['ui.stepnumber', 'ui.stepdate']);
 
 
@@ -58,7 +45,7 @@ angular.module("ui.stepnumber", [])
 				var str = num.toString(),
 					len = str.length, blank = "0000000000";
 				return len<digits ? blank.substring(0,(digits-len))+str : str;
-			}
+			};
 
             scope.$watch(ngModelCtrl,
                     function(){
@@ -73,11 +60,11 @@ angular.module("ui.stepnumber", [])
                     });
 
             scope.fakeFocus = false;
-            
+
             scope.setWidth = function(){
-                    width =8 + digits*8;
+                    var width =8 + digits*8;
                     return {width:width.toString()+'px'};
-            }
+            };
 
             input.$parsers.unshift(function (inputValue) {
                 var digits = inputValue.replace( /[^0-9]+/g, '');
@@ -87,15 +74,17 @@ angular.module("ui.stepnumber", [])
             });
 
             scope.keyControl = function(event){
-            	if(event.target.tagName == 'DIV') switch(event.keyCode) {
+                var elem;
+            	if(event.target.tagName === 'DIV') {
+                    switch(event.keyCode) {
 							case 27:
-								var elem = element.find('div');
+								elem = element.find('div');
 								scope.value = lastValidValue;
 								event.preventDefault();
 								$timeout(function(){elem[0].blur();},0);
 								break;
 							case 13:
-								var elem = element.find('div');
+								elem = element.find('div');
 								scope.validate();
 								event.preventDefault();
 								$timeout(function(){elem[0].blur();},0);
@@ -115,15 +104,17 @@ angular.module("ui.stepnumber", [])
 							default:
 							event.preventDefault();
 						}
-            	else switch(event.keyCode) {
+                    }
+            	else {
+                    switch(event.keyCode) {
                     	case 27:
-                        	var elem = element.find('input');
+                        	elem = element.find('input');
                         	scope.value = lastValidValue;
                         	event.preventDefault();
                         	$timeout(function(){elem[0].blur();},0);
                         	break;
                     	case 13:
-                        	var elem = element.find('input');
+                        	elem = element.find('input');
                         	scope.validate();
                         	event.preventDefault();
                         	$timeout(function(){elem[0].blur();},0);
@@ -131,8 +122,9 @@ angular.module("ui.stepnumber", [])
                     	default:
                         event.preventDefault();
                 	}
+                }
 
-            }
+            };
 
             scope.inc = function(){
                 var num = parseInt(scope.value,10);
@@ -141,13 +133,13 @@ angular.module("ui.stepnumber", [])
                         num++;
                         scope.decDisable = false;
                     }
-                    if(num==max) scope.incDisable = true;
+                    if(num===max) {scope.incDisable = true;}
                 }
-                else num++;
+                else {num++;}
                 scope.value = fixedLen(num);
                 ngModelCtrl.$setViewValue(scope.value);
                 ngModelCtrl.$render();
-            }
+            };
 
             scope.dec = function(){
                 var num = parseInt(scope.value,10);
@@ -156,18 +148,18 @@ angular.module("ui.stepnumber", [])
                         num--;
                         scope.incDisable = false;
                     }
-                    if(num==min)scope.decDisable = true;
+                    if(num===min){scope.decDisable = true;}
                 }
-                else num--;
+                else {num--;}
                 scope.value = fixedLen(num);
                 ngModelCtrl.$setViewValue(scope.value);
                 ngModelCtrl.$render();
-            }
+            };
 
             scope.validate = function(){
                 scope.fakeFocus = false;
                 var val = parseInt(scope.value,10);
-                if(isNaN(val)) scope.value = lastValidValue;
+                if(isNaN(val)) {scope.value = lastValidValue;}
                 else {
 
                     if (val<min) {
@@ -184,21 +176,21 @@ angular.module("ui.stepnumber", [])
                 }
                 ngModelCtrl.$setViewValue(scope.value);
                 ngModelCtrl.$render();
-            }
+            };
 
             scope.selectAll = function($event){
                 scope.fakeFocus = true;
                 $timeout(function(){
                     $event.target.select();
                 },0);
-            }
+            };
         }
-    }
- }])
+    };
+ }]);
 
 angular.module("ui.stepdate", ['ui.stepnumber'])
 
-.directive('stepDate',['$timeout', function ($timeout) {
+.directive('stepDate',[function () {
     return {
         restrict: 'E',
         scope:{},
@@ -238,7 +230,7 @@ angular.module("ui.stepdate", ['ui.stepnumber'])
             </ng-form>',
 
         link:function(scope,element,attrs, ngDateModelCtrl){
-            
+
             scope.stepDate = {};
             scope.$watch(ngDateModelCtrl.$viewValue, function(){
                     scope.stepDate.day = ngDateModelCtrl.$viewValue.split('-')[2];
@@ -254,7 +246,7 @@ angular.module("ui.stepdate", ['ui.stepnumber'])
                                             scope.stepDate.month + '-' +
                                             scope.stepDate.day);
                 ngDateModelCtrl.$render();
-            }
+            };
         }
-    }
+    };
 }]);
