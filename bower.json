@@ -7,7 +7,7 @@
     "Vlad Blindu <vlad.blindu@gmail.com>"
   ],
   "description": "Numeric Stepper for AngularJS/bootstrap",
-  "main":["src/stepper.js", "src/stepper.css"],
+  "main":["dist/stepper.js", "dist/stepper.css"],
   "keywords": [
     "angular",
     "stepper",
