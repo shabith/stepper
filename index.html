@@ -4,15 +4,29 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-		<title>Angular Stepper</title>
+		<link rel="stylesheet" href="dist/stepper.css">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
+		<title>Angular Bootstrap Stepper</title>
 	</head>
 	<body ng-app="demo">
-	<h1>test</h1>
+	<div class="col-md-12" ng-controller="StepperController">
+		<h1>Angular Bootstrap Stepper</h1>
+		<step-number ng-model="myValue" max="22" min="18" digits="2"></step-number>
+		<pre>
+			<code class="javascript">
+			&lt;step-number ng-model="myValue" max="22" min="18" digits="2"&gt;&lt;/step-number&gt;
+			</code>
+		</pre>
+	</div>
+	
 	<script src="bower_components/angular/angular.min.js"></script>
-	<script src="src/stepper.js"></script>
+	<script src="dist/stepper.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
 	<script>
 	angular.module('demo', ['ui.stepper'])
 	.controller('StepperController', ['$scope', function($scope){
+		$scope.myValue = 20;
 		
 	}]);
 	</script>

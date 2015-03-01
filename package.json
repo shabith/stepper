@@ -1,5 +1,5 @@
 {
-  "name": "AngularJS Bootstrap Stepper",
+  "name": "stepper",
   "version": "1.0.0",
   "description": "Numeric Stepper for AngularJS/bootstrap",
   "main": "stepper.js",

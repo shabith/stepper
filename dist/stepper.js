@@ -90,15 +90,13 @@ angular.module("ui.stepnumber", [])
 								$timeout(function(){elem[0].blur();},0);
 								break;
 							case 187:
+                            case 39:
+                            case 38:
 								scope.inc();
 								break;
 							case 189:
-								scope.dec();
-								break;
-							case 39:
-								scope.inc();
-								break;
-							case 37:
+                            case 37:
+                            case 40:
 								scope.dec();
 								break;
 							default:
