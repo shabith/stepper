@@ -1,37 +1,42 @@
-/*! stepper - v1.0.0 - 2015-03-01
+/*! stepper - v1.0.0 - 2015-03-28
 * https://github.com/shabith/stepper
 * Copyright (c) Shabith Ishan [shabith] 2015; Licensed MIT */
-angular.module("ui.stepper", ['ui.stepnumber', 'ui.stepdate']);
+/*jshint es5: true, multistr: true */
+/*global angular*/
+
+
+angular.module('ui.stepper', ['ui.stepnumber', 'ui.stepdate']);
 
 
 
-angular.module("ui.stepnumber", [])
+angular.module('ui.stepnumber', [])
 
 
 .directive('stepNumber',['$timeout', function ($timeout) {
+    'use strict';
     return {
         restrict: 'E',
-        require:"ngModel",
+        require:'ngModel',
         scope:{},
         template:'\
-            <ng-form name="stepNumberForm" novalidate \>\
+        <ng-form name="stepNumberForm" novalidate >\
                 <div class="step-number fakeFocus"\
                     tabindex="{{$id}}"\
                     ng-class="{\'fake-focus\': fakeFocus}"\
                     ng-keyup="keyControl($event)"><button\
-						ng-disabled="incDisable"\
-                        class="btn btn-primary btn-stepper"\
-						ng-click="inc()">\
-						<i class="glyphicon glyphicon-plus "></i></button><input type="text"\
+                        ng-disabled="decDisable"\
+                        class="btn btn-primary btn-stepper "\
+                        ng-click="dec()"><i class="glyphicon glyphicon-minus "></i></button><input type="text"\
                     ng-style="setWidth()"\
                     name="value"\
                     ng-keyup="keyControl($event)"\
                     ng-model="value"\
                     ng-focus="selectAll($event)"\
                     ng-blur="validate()" ><button\
-						ng-disabled="decDisable"\
-                        class="btn btn-primary btn-stepper "\
-						ng-click="dec()"><i class="glyphicon glyphicon-minus "></i></button></div>\
+                        ng-disabled="incDisable"\
+                        class="btn btn-primary btn-stepper"\
+                        ng-click="inc()">\
+                        <i class="glyphicon glyphicon-plus "></i></button></div>\
             </ng-form>',
 
         link:function(scope,element,attrs, ngModelCtrl){
@@ -43,7 +48,7 @@ angular.module("ui.stepnumber", [])
             var input = scope.stepNumberForm.value;
 			var fixedLen = function(num){
 				var str = num.toString(),
-					len = str.length, blank = "0000000000";
+					len = str.length, blank = '0000000000';
 				return len<digits ? blank.substring(0,(digits-len))+str : str;
 			};
 
@@ -186,13 +191,14 @@ angular.module("ui.stepnumber", [])
     };
  }]);
 
-angular.module("ui.stepdate", ['ui.stepnumber'])
+angular.module('ui.stepdate', ['ui.stepnumber'])
 
 .directive('stepDate',[function () {
+    'use strict';
     return {
         restrict: 'E',
         scope:{},
-            require:"ngModel",
+            require:'ngModel',
         template:'\
             <ng-form name="stepDateForm" class="form-inline" novalidate>\
                         <div class="step-date">Day:\
