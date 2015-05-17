@@ -36,6 +36,7 @@ angular.module('ui.stepnumber', [])
                     tabindex="{{$id}}"\
                     ng-class="{\'fake-focus\': fakeFocus}"\
                     ng-keyup="keyControl($event)"><button\
+                        type="button"\
                         ng-disabled="decDisable"\
                         class="btn btn-primary btn-stepper "\
                         ng-click="dec()"><i class="glyphicon glyphicon-minus "></i></button><input type="text"\
@@ -45,6 +46,7 @@ angular.module('ui.stepnumber', [])
                     ng-model="value"\
                     ng-focus="selectAll($event)"\
                     ng-blur="validate()" ><button\
+                        type="button"\
                         ng-disabled="incDisable"\
                         class="btn btn-primary btn-stepper"\
                         ng-click="inc()">\

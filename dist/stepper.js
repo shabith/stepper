@@ -1,4 +1,4 @@
-/*! stepper - v1.0.0 - 2015-03-28
+/*! stepper - v1.0.0 - 2015-05-17
 * https://github.com/shabith/stepper
 * Copyright (c) Shabith Ishan [shabith] 2015; Licensed MIT */
 /*jshint es5: true, multistr: true */
@@ -24,6 +24,7 @@ angular.module('ui.stepnumber', [])
                     tabindex="{{$id}}"\
                     ng-class="{\'fake-focus\': fakeFocus}"\
                     ng-keyup="keyControl($event)"><button\
+                        type="button"\
                         ng-disabled="decDisable"\
                         class="btn btn-primary btn-stepper "\
                         ng-click="dec()"><i class="glyphicon glyphicon-minus "></i></button><input type="text"\
@@ -33,6 +34,7 @@ angular.module('ui.stepnumber', [])
                     ng-model="value"\
                     ng-focus="selectAll($event)"\
                     ng-blur="validate()" ><button\
+                        type="button"\
                         ng-disabled="incDisable"\
                         class="btn btn-primary btn-stepper"\
                         ng-click="inc()">\
